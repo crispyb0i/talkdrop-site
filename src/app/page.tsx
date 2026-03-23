@@ -59,6 +59,17 @@ function HeroSection() {
             Get Notified at Launch
           </a>
         </div>
+
+        <div className="mt-16 flex justify-center">
+          <Image
+            src="/images/hero-phone.png"
+            alt="Talkdrop app on iPhone showing voice recording waveform"
+            width={800}
+            height={600}
+            className="w-full max-w-lg sm:max-w-2xl"
+            priority
+          />
+        </div>
       </div>
     </section>
   );
@@ -71,63 +82,24 @@ function HowItWorksSection() {
       title: "Record",
       description:
         "Tap the record button and talk. Pause, resume, and stop whenever you want. Works offline too.",
-      icon: (
-        <svg
-          className="h-8 w-8 text-primary"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"
-          />
-        </svg>
-      ),
+      image: "/images/step-record.png",
+      imageAlt: "3D microphone with sound waves illustrating voice recording",
     },
     {
       number: "2",
       title: "AI Transcribes & Summarizes",
       description:
         "Your recording is transcribed by OpenAI Whisper, then summarized and tagged by Claude AI. All in seconds.",
-      icon: (
-        <svg
-          className="h-8 w-8 text-primary"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"
-          />
-        </svg>
-      ),
+      image: "/images/step-transcribe.jpeg",
+      imageAlt: "3D document with sparkles illustrating AI transcription",
     },
     {
       number: "3",
       title: "Search & Revisit",
       description:
         "Full-text search across all your notes. Find that idea from last week in seconds, not minutes.",
-      icon: (
-        <svg
-          className="h-8 w-8 text-primary"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-          />
-        </svg>
-      ),
+      image: "/images/step-search.jpeg",
+      imageAlt: "Magnifying glass over note cards illustrating search functionality",
     },
   ];
 
@@ -147,8 +119,14 @@ function HowItWorksSection() {
               key={step.number}
               className="relative rounded-2xl border border-white/10 bg-surface-light p-8 text-center"
             >
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                {step.icon}
+              <div className="relative mx-auto mb-6 h-[200px] w-full sm:h-[250px]">
+                <Image
+                  src={step.image}
+                  alt={step.imageAlt}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                />
               </div>
               <div className="mb-2 text-xs font-bold uppercase tracking-widest text-primary">
                 Step {step.number}
@@ -295,8 +273,19 @@ function FeaturesSection() {
   ];
 
   return (
-    <section id="features" className="px-6 py-20 sm:py-28">
-      <div className="mx-auto max-w-5xl">
+    <section id="features" className="relative overflow-hidden px-6 py-20 sm:py-28">
+      {/* Background image */}
+      <Image
+        src="/images/features-bg.jpeg"
+        alt=""
+        fill
+        className="object-cover"
+        sizes="100vw"
+      />
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-background/80" />
+
+      <div className="relative mx-auto max-w-5xl">
         <h2 className="text-center text-3xl font-bold text-white sm:text-4xl">
           Everything you need
         </h2>
@@ -534,8 +523,19 @@ function PricingSection() {
 
 function EmailCaptureSection() {
   return (
-    <section id="notify" className="px-6 py-20 sm:py-28">
-      <div className="mx-auto max-w-xl text-center">
+    <section id="notify" className="relative overflow-hidden px-6 py-20 sm:py-28">
+      {/* Background image */}
+      <Image
+        src="/images/cta-bg.jpeg"
+        alt=""
+        fill
+        className="object-cover"
+        sizes="100vw"
+      />
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-background/80" />
+
+      <div className="relative mx-auto max-w-xl text-center">
         <h2 className="text-3xl font-bold text-white sm:text-4xl">
           Get notified when we launch
         </h2>
@@ -553,12 +553,65 @@ function EmailCaptureSection() {
   );
 }
 
+function LifestyleSection() {
+  return (
+    <section className="bg-surface px-6 py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          {/* Image */}
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+            <Image
+              src="/images/student-lifestyle.jpeg"
+              alt="Student in a lecture hall using Talkdrop on their phone to capture notes"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+
+          {/* Text */}
+          <div>
+            <h2 className="text-3xl font-bold text-white sm:text-4xl">
+              Built for students and creators
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-muted">
+              In a fast-paced lecture, you can&apos;t type fast enough. With
+              Talkdrop, just hit record and focus on understanding — your
+              notes write themselves.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-muted">
+              Creators use Talkdrop to capture ideas the moment they strike —
+              on a walk, in the car, or right before bed. Every thought is
+              transcribed, summarized, and searchable within seconds.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <span className="rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+                Lectures
+              </span>
+              <span className="rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+                Brainstorms
+              </span>
+              <span className="rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+                Meeting notes
+              </span>
+              <span className="rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+                Voice journals
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   return (
     <>
       <HeroSection />
       <HowItWorksSection />
       <FeaturesSection />
+      <LifestyleSection />
       <PricingSection />
       <EmailCaptureSection />
     </>
