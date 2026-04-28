@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
 import "./globals.css";
@@ -7,6 +7,16 @@ import "./globals.css";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+});
+
+// Manrope is the documented display font in Design System.md
+// (forest green primary, soft mint accent, Manrope for headlines).
+// Apply via globals.css (h1–h4 default to var(--font-manrope))
+// or per-element via Tailwind's `font-display` utility.
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -181,7 +191,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} ${manrope.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         <Header />
         <main className="flex-1">{children}</main>

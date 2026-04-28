@@ -17,11 +17,20 @@
   --color-surface-light: var(--surface-light);
   --color-muted: var(--muted);
   --font-sans: var(--font-inter);
+  --font-display: var(--font-manrope);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Apply Manrope (the documented display font) to every heading.
+   Body text stays on Inter via --font-sans. Override on a per-element
+   basis with the `font-sans` utility if any heading needs the body font. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-manrope), var(--font-inter), system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.02em;
 }
 
 html {
